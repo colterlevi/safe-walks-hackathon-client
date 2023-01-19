@@ -19,6 +19,8 @@ const OngoingRequest = ({ ongoingRequest, coords }) => {
     const [instructions, setInstructions] = useState([])
     const [destination, setDestination] = useState(ongoingRequest.start_location)
     const [location, setLocation] = useState("Meetup Location")
+    const [complete, setComplete] = useState(false)
+    const [cancel, setCancel] = useState(false)
     // ongoingRequest.start_location
 
     const { isLoaded } = useJsApiLoader({
@@ -80,13 +82,19 @@ const OngoingRequest = ({ ongoingRequest, coords }) => {
                     active: false
                 }),
             })
+            let res = await req.json()
+            console.log(res)
         }
+
+        setComplete(true)
         request()
+        console.log('navigating ...')
         navigate('/openrequests')
 
     }
 
     const handleCancel = () => {
+        setCancel(true)
         navigate('/openrequests')
         const request = async () => {
             let req = await fetch(`http://localhost:3000/requests/${ongoingRequest.id}`, {
@@ -139,8 +147,8 @@ const OngoingRequest = ({ ongoingRequest, coords }) => {
                     <button className="w-20 m-3 p-1 bg-slate-500 text-slate-100 rounded-md" onClick={() => { setTravelMode('WALKING') }} style={travelMode === 'WALKING' ? { color: 'orange' } : { color: 'white' }}>Walking</button>
                     <button className="w-20 m-3 p-1 bg-slate-500 text-slate-100 rounded-md" onClick={() => { setTravelMode('TRANSIT') }} style={travelMode === 'TRANSIT' ? { color: 'orange' } : { color: 'white' }}>Transit</button><br />
                     <button className="w-48 m-3 p-1 bg-slate-500 text-slate-100 rounded-md" onClick={() => { handleClick() }}>Meet Walker</button><br />
-                    <button className="w-48 m-3 p-1 bg-orange-400 text-slate-100 rounded-md" onClick={() => { handleComplete() }}>Walk Completed</button><br />
-                    <button className="w-48 m-3 p-1 bg-red-500 text-slate-100 rounded-md" onClick={() => { handleCancel() }}>Cancel Walk</button><br />
+                    <button className="w-48 m-3 p-1 bg-orange-400 text-slate-100 rounded-md" onClick={() => { handleComplete() }} style={complete ? { background: 'brown' } : { background: 'orange' }}>Walk Completed</button><br />
+                    <button className="w-48 m-3 p-1 bg-red-500 text-slate-100 rounded-md" onClick={() => { handleCancel() }} style={cancel ? { background: 'brown' } : { background: 'red' }}>Cancel Walk</button><br />
                 </div>
                 <div className='h-52 w-4/6 p-3 overflow-auto scrollbar-hide float-right'>{instructions}</div>
             </div>

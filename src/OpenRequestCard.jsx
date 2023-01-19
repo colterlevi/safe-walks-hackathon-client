@@ -79,6 +79,7 @@ const OpenRequestCard = ({ request, setOngoingRequest, coords }) => {
             })
             let res = req.json()
             console.log(res)
+            navigate("/ongoingrequest")
         } else {
             navigate("/protectorscheduledwalk")
         }
