@@ -37,7 +37,7 @@ const OpenRequests = ({ setOngoingRequest, ongoingRequest, coords }) => {
             <div className='text-left'>
                 < ProtectorNavBar />
             </div>
-            <div className="flex-row pl-60 w-screen justify-center items-center p-10 backdrop-blur-sm">
+            <div className="flex-row pl-60 w-screen justify-center items-center p-10 backdrop-blur-sm overflow-auto">
                 {
                     requests.map((request, i) => {
                         return (

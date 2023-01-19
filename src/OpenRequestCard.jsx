@@ -88,13 +88,17 @@ const OpenRequestCard = ({ request, setOngoingRequest, coords }) => {
 
     return (
         <div className="">
-            <div className='text-left rounded-lg bg-slate-100 bg-opacity-75 w-3/5 h-3/5 p-6'>
-                {request.current ? (<p className='text-indigo-700 text-2xl'><b>Current Request</b></p>) : (<p className='text-slate-700'><b>Future Request</b></p>)}
-                <p className='text-xl'>Meetup Location: {request.start_location}</p>
-                <p className='text-xl'>Your location to meetup location:</p><p>{duration}</p> by walk &nbsp; <b>{MTAduration}</b> <p>by subway</p>
-                <p>Destination:{request.end_location}</p>
-                <p>Meetup Location to Destination: <b>{duration1}</b> by walk </p>
-                <button onClick={() => { handleClick() }}><b>Accept Walk Request</b></button>
+            <div className='rounded-lg bg-slate-100 bg-opacity-80 w-3/5 h-3/5 px-6 pt-6 pb-16'>
+                {request.current ? (<p className='text-indigo-700 text-2xl font-bold'>Current Request</p>) : (<p className='text-orange-400 text-2xl font-bold'>Future Request</p>)}
+                <p className='font-bold'>Meetup Location: <b className='text-pink-600'>{request.start_location}</b></p>
+                <p className='font-bold'> Time from your location:</p>
+                <p className='font-bold'><b className='text-pink-600'>{duration}</b> by walk</p>
+                <p className='font-bold'><b className='text-pink-600'>{MTAduration}</b> by subway</p>
+                <p className='font-bold'>Destination: <b className='text-pink-600'>{request.end_location}</b></p>
+                <p className='font-bold'>Trip Duration: <b className='text-pink-600'>{duration1}</b></p>
+                <div>
+                <button className="p-2 mt-2 bg-slate-500 hover:bg-orange-400 text-slate-100 uppercase rounded-md float-right" onClick={() => { handleClick() }}><b>Accept</b></button>
+                </div>
             </div>
         </div>
     )
