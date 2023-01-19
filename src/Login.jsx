@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ProtectorSignup from "./ProtectorSignup";
 import ProtectorLogin from "./ProtectorLogin"
 import WalkerLogin from "./WalkerLogin"
+import HomeBtn from "./HomeBtn";
 // import { Dialog } from '@headlessui/react'
 // import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -27,8 +28,12 @@ const Login = () => {
 
     return (
         <div className="">
-            <div className="bg-gradient-to-r from-slate-800 to-transparent h-44 flex justify-center items-center">
-                <h1 className="font-sans text-slate-200 font-extrabold text-center text-6xl" >Protectors of New York</h1>
+            <div className="flex bg-slate-100 bg-opacity-75 backdrop-grayscale  h-28 span-2">
+                <HomeBtn />
+                <div className="py-3">
+                <h1 className="font-sans font-bold text-orange-400 text-left text-6xl" >PONY</h1>
+                <h2 className="font-sans font-bold text-orange-400 text-left text-xl" >Protectors of New York</h2>
+                </div>
         </div>
             <div className="flex w-screen h-screen gap-x-96 justify-center items-center">
                 {showProtector === true ? 
@@ -42,15 +47,15 @@ const Login = () => {
                     // </section>
                     // </div> 
                     :
-                <div onClick={() => { handleProtector() } } className="flex justify-center items-center rounded-full bg-slate-500 bg-opacity-75 w-96 h-96 shadow-lg ring-8 ring-transparent hover:ring-indigo-500">
-                    <h2 className="text-slate-100 text-4xl font-semibold">Protector</h2>
+                    <div onClick={() => { handleProtector() }} className="flex justify-center items-center rounded-full bg-slate-100 backdrop-grayscale bg-opacity-75 w-96 h-96 shadow-lg ring-8 ring-transparent text-slate-500 hover:ring-orange-400 hover:text-indigo-500">
+                    <h2 className="text-4xl font-semibold">Protector</h2>
             </div> 
                 }
 
                 {showWalker === true ? 
                     <WalkerLogin /> :
-                <div onClick={() => { handleWalker() } } className="flex justify-center items-center rounded-full bg-slate-500 bg-opacity-75 w-96 h-96 ring-8 ring-transparent hover:ring-indigo-500">
-                    <h2 className="text-slate-100 text-4xl font-semibold">Walker</h2>
+                    <div onClick={() => { handleWalker() }} className="flex justify-center items-center rounded-full bg-slate-100 backdrop-grayscale bg-opacity-75 w-96 h-96 ring-8 ring-transparent text-slate-500 hover:ring-orange-400 hover:text-indigo-500">
+                    <h2 className="text-4xl font-semibold">Walker</h2>
                 </div>
                 }
         </div>
